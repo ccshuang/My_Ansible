@@ -25,7 +25,7 @@
 
 #远程批量上传文件
 
-  python3 start_asd.py -s cy -g WebServer -action put -local Install.py -remote /App/bin
+  python3 start_asd.py -s cy -g WebServer -action put -local Install.py -remote "/App/bin/install_r1.py"
   
 #批量查看主机磁盘信息
 
