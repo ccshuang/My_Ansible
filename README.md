@@ -22,8 +22,13 @@
 > -remoet   [filename]      需要操作远程服务器的文件名称  (注意:此处建议为绝对路径的文件名字)
 
 示例:
-#远程执行命令
 
-  py start_asd.py -s cy -g WebServer -action put -local Install.py -remote /App/bin
+#远程批量上传文件
+
+  python3 start_asd.py -s cy -g WebServer -action put -local Install.py -remote /App/bin
+  
+#批量查看主机磁盘信息
+
+  python3 start_asd.py -s cy,Soar -gWebServer,FortServer -cmd "df -h"
 
 
