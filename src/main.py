@@ -18,7 +18,7 @@ class Asd(object):
     '''
 
     def __init__(self):
-        parser = argparse.ArgumentParser(description='Used to open the FTP client')
+        parser = argparse.ArgumentParser(description='This is a similar Ansible program, but it is not finished yet. Please contact me if you have any questions. Please contact me at tcc.soar@gmail.com')
         parser.add_argument('-s', '--server',action='store', help="Specify host IP or Hostname. Can't be empty!")   #default='localhost'
         parser.add_argument('-g', '--group', help='Specify host groups')
         parser.add_argument('-cmd', help='The command to send to a remote server')
