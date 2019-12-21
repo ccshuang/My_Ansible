@@ -143,9 +143,11 @@ class Asd(object):
         连接服务器
         '''
 
+        private_key = paramiko.RSAKey.from_private_key_file(r'/Users/tiancc/.ssh/id_rsa')
+
         ssh = paramiko.SSHClient()
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        ssh.connect(hostname=IP, port=Port, username=User, password=Passd)
+        ssh.connect(hostname=IP, port=Port, username=User, password=Passd,pkey=private_key)
 
         '''
         执行命令
