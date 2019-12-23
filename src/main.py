@@ -117,10 +117,17 @@ class Asd(object):
     def manager(self,user):
 
         _ip = self.config.get(user,'ip')
-        _port = self.config.get(user,'port')
-        _user = self.config.get(user,'user')
-        _pasd = self.config.get(user,'pasd')
+        # _port = self.config.get(user,'port')
+        # _user = self.config.get(user,'user')
+        # _pasd = self.config.get(user,'pasd')
         _cmd = self.parameter()
+
+        try:
+            _port = 22
+            _user = 'root'
+            _pasd = ''
+        except configparser.NoOptionError as e:
+            print(e)
 
         # if self.args.action == 'put':
         #     res = self._put(_ip,_port,_user,_pasd)
@@ -143,7 +150,7 @@ class Asd(object):
         连接服务器
         '''
 
-        private_key = paramiko.RSAKey.from_private_key_file(r'/Users/tiancc/.ssh/id_rsa')
+        private_key = paramiko.RSAKey.from_private_key_file(r'/Users/tiancc/.ssh/id_rsa','Tianchenchao@163.com')
 
         ssh = paramiko.SSHClient()
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
