@@ -116,19 +116,18 @@ class Asd(object):
 
     def manager(self,user):
 
-        _ip = self.config.get(user,'ip')
-        # _port = self.config.get(user,'port')
-        # _user = self.config.get(user,'user')
-        # _pasd = self.config.get(user,'pasd')
-        _cmd = self.parameter()
-
         try:
+            _ip = self.config.get(user, 'ip')
+            _port = self.config.get(user,'port')
+            _user = self.config.get(user,'user')
+            _pasd = self.config.get(user,'pasd')
+
+        except configparser.NoOptionError as e:
             _port = 22
             _user = 'root'
             _pasd = ''
-        except configparser.NoOptionError as e:
             print(e)
-
+        _cmd = self.parameter()
         # if self.args.action == 'put':
         #     res = self._put(_ip,_port,_user,_pasd)
         #     return res
