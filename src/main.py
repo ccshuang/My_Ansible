@@ -27,6 +27,7 @@ class Asd(object):
         parser.add_argument('-remote', help='Batch delete directory')
         self.args = parser.parse_args()
         self.help = parser.print_help
+        self.private_pey = paramiko.RSAKey.from_private_key_file(r'/Users/tiancc/.ssh/id_rsa','Tianchenchao@163.com')
 
         '''
         加载用户配置信息
@@ -149,11 +150,9 @@ class Asd(object):
         连接服务器
         '''
 
-        private_key = paramiko.RSAKey.from_private_key_file(r'/Users/tiancc/.ssh/id_rsa','Tianchenchao@163.com')
-
         ssh = paramiko.SSHClient()
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        ssh.connect(hostname=IP, port=Port, username=User, password=Passd,pkey=private_key)
+        ssh.connect(hostname=IP, port=Port, username=User, password=Passd,pkey=self.private_pey)
 
         '''
         执行命令
@@ -183,7 +182,7 @@ class Asd(object):
         fil_res = self.local()
 
         transport = paramiko.Transport((IP, int(Port)))
-        transport.connect(username=User, password=Pasd)
+        transport.connect(username=User, password=Pasd,pkey=self.private_pey)
 
         sftp = paramiko.SFTPClient.from_transport(transport)
         try:
@@ -201,7 +200,7 @@ class Asd(object):
         fil_res = self.args.local
 
         transport = paramiko.Transport((IP, int(Port)))
-        transport.connect(username=User, password=Pasd)
+        transport.connect(username=User, password=Pasd,pkey=self.private_pey)
 
         sftp = paramiko.SFTPClient.from_transport(transport)
         try:
